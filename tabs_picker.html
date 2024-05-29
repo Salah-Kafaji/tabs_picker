@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+    <title>قسم تكنلوجيا المعلومات</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+
+<section class="SH_nahaj_book">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            font-family: Tajawal;
+            color: #020D08;
+            background-color: #F4F4F4;
+        }
+        .SH_nahaj_book {
+            width: 100%;
+            padding: 25px 0px;
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0px 0px 4px rgba(0,0,0,0.14);
+            margin-top: 64px;
+            background-color: white;
+        }
+
+        .SH_single_tab{
+            width:100%;
+            width:800px;
+            height: 300px;
+        }
+
+        .SH_tabs{
+            width:100%;
+        }
+
+        .SH_tabs li , .SH_tabs ul{
+            list-style: none;
+            padding: 0px;
+            margin:0px;
+        }
+        
+        .SH_tabs_content{
+            position: relative;
+            height: 300px;
+        }
+
+        .SH_tabs_content li{
+           position:absolute;
+           top: 0px;
+           right:0px;
+           left:0px;
+           margin:auto;
+           width: max-content;
+           display:none;
+        }
+
+        .SH_tabs_btns{
+            background-color:#F6F6F6;
+            color:#B7B7B7;
+            width:max-content;
+            margin: 14px auto !important;;
+            padding: 6px !important;
+            border-radius: 75px;
+            overflow: hidden;
+        }
+
+        .SH_tabs_btns li{
+            display:inline-block;
+            padding: 10px 24px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .SH_tabs_btns_check {
+            background-color:#6B958B;
+            color:#fff;
+        }
+
+    </style>
+    <div class="SH_tabs">
+        <ul class="SH_tabs_btns">
+
+        </ul>
+        <ul class="SH_tabs_content">
+            <li data_tab_title="title1">
+                <div class="SH_single_tab" style="background-color:red;">
+
+                </div>
+            </li>
+            <li data_tab_title="title2">
+                <div class="SH_single_tab"  style="background-color:blue;">
+
+                </div>
+            </li>
+            <li data_tab_title="title3">
+                <div class="SH_single_tab"  style="background-color:yellow;">
+
+                </div>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="SH_tabs">
+        <ul class="SH_tabs_btns">
+
+        </ul>
+        <ul class="SH_tabs_content">
+            <li data_tab_title="البحوث">
+                <div class="SH_single_tab" style="background-color:red;">
+
+                </div>
+            </li>
+            <li data_tab_title="المستشرقون">
+                <div class="SH_single_tab"  style="background-color:blue;">
+
+                </div>
+            </li>
+
+        </ul>
+    </div>
+
+</section>
+
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+<script>
+    $('.SH_tabs').each(function(index){
+        var this_tabs =  $(this);
+        this_tabs.find('.SH_tabs_content').find('li').each(function(index){
+            var TabeTitle = $(this).attr('data_tab_title');
+            this_tabs.find('.SH_tabs_btns').append('<li>'+TabeTitle+'</li>');
+
+        });
+        this_tabs.find('.SH_tabs_btns li').eq(0).addClass('SH_tabs_btns_check');
+        this_tabs.find('.SH_tabs_content li').eq(0).show();
+    });
+    $('.SH_tabs_btns li').click(function(){
+        var btnParent = $(this).parent();
+        var tab_index =  $(this).index();
+        btnParent.find('li').removeClass('SH_tabs_btns_check');
+        $(this).addClass('SH_tabs_btns_check');
+        var parent_tab = btnParent.parent();
+        parent_tab.find('.SH_tabs_content li').fadeOut(500);
+        parent_tab.find('.SH_tabs_content li').eq(tab_index).fadeIn(500);
+    });
+    
+</script>
+
+
+</body>
+</html>
